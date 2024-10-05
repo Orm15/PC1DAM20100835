@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="imgJugador" type="id">imgJugador</item>
+    <item name="txtNombre" type="id">txtNombre</item>
+    <item name="txtAnoNacimiento" type="id">txtAnoNacimiento</item>
+    <item name="txtEdad" type="id">txtEdad</item>
+</resources>

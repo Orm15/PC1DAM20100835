@@ -11,12 +11,20 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import dev.juliocarrizales.pc1dam20100835.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var binding: ActivityMainBinding
+    private lateinit var recyclerView: RecyclerView
+    private lateinit var jugadorAdapter: JugadorAdapter
+
+    val arrSO = arrayOf(
+        "Ronaldo","Paolo","Cueva"
+    )
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -41,6 +49,20 @@ class MainActivity : AppCompatActivity() {
                 R.id.nav_home, R.id.nav_gallery, R.id.nav_slideshow
             ), drawerLayout
         )
+        recyclerView = findViewById(R.id.recyclerView) // Asegúrate de que el ID sea correcto
+        recyclerView.layoutManager = LinearLayoutManager(this)
+
+        // Crear una lista de jugadores
+        val jugadores = listOf(
+            Jugador("Lionel Messi", 1987, R.drawable.jugador1), // Reemplaza por tus recursos
+            Jugador("Cristiano Ronaldo", 1985, R.drawable.jugador2),
+            //Jugador("Neymar Jr", 1992, R.drawable.jugador3)
+        )
+
+        jugadorAdapter = JugadorAdapter(jugadores)
+        recyclerView.adapter = jugadorAdapter
+
+
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
     }
